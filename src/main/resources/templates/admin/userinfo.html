@@ -1,0 +1,59 @@
+<!DOCTYPE>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{fragments/layout.html :: head}"></head>
+<body>
+    <div id="title" style="display: none;">Informace o pojištění</div>
+    <div class="card text-center">
+        <div class="card-header rem-20" style="background-color: #e7470a;">
+            <img class="position-absolute top-0 start-0 ms-3 mt-2" th:src="@{http://localhost:8080/images/settings.png}" rel="icon" alt="settings-icon" height="60" width="60"/>
+            <ul class="nav nav-tabs card-header-tabs justify-content-center">
+                <li class="nav-item">
+                    <a class="btn text-white border-0" data-bs-toggle="modal" data-bs-target="#insurance" data-bs-whatever="add-insurance">Přidat pojištění</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white border-0" th:href="@{/admin}">Zpět k databázi</a>
+                </li>
+            </ul>
+        </div>
+        <div th:insert="~{fragments/layout.html :: alerts}"></div>
+        <div class="card-body justify-content-center">
+            <div class="card mb-4">
+                <div th:replace="~{fragments/layout.html :: user-card}"></div>
+            </div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <div th:replace="~{fragments/table.html :: insurance-table-th}"></div>
+                    <th>Číslo pojíštěnce</th>
+                    <th>Upravit pojíštění</th>
+                    <th>Smazat pojištění</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="insurance : ${insurance}">
+                    <div th:replace="~{fragments/table.html :: insurance-table-td}"></div>
+                    <td th:text="${insurance.userId}"></td>
+                    <form th:action="@{|/admin/insurance/update/${insurance.id}|}" th:method="GET">
+                        <td>
+                            <button type="btn" class="bg-warning rounded-pill" data-bs-toggle="modal" data-bs-target="#updateInsurance" data-bs-whatever="update-insurance">
+                                <img th:src="@{http://localhost:8080/images/edit.png}" rel="icon" alt="edit-icon" height="15" width="15"/>
+                            </button>
+                        </td>
+                    </form>
+                    <form action="#" th:action="@{'/admin/userinfo/delete/insurance/' + ${insurance.id}}" th:method="POST">
+                        <td>
+                            <button type="btn" class="bg-danger rounded-pill">-</button>
+                        </td>
+                    </form>
+                </tr>
+                </tbody>
+            </table>
+            <div th:replace="~{fragments/forms.html :: insurance-form-fragment}"></div>
+
+        </div>
+    </div>
+    <script th:replace="~{fragments/layout.html :: script}"></script>
+</body>
+</html>

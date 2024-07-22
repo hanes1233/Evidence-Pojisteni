@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div th:fragment="insurance-table-th" id="insurance-table-th">
+      <th>Typ pojištění</th>
+      <th>Častka</th>
+      <th>Objekt</th>
+      <th>Platí od</th>
+      <th>Platí do</th>
+  </div>
+  <div th:fragment="insurance-table-td" id="insurance-table-td">
+      <td th:text="${insurance.type}"></td>
+      <td th:text="${insurance.amount}"></td>
+      <td th:text="${insurance.subject}"></td>
+      <td th:text="${insurance.dateOfStart}"></td>
+      <td th:text="${insurance.dateOfEnd}"></td>
+  </div>
+
+</body>
+</html>

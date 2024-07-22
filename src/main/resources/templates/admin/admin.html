@@ -1,0 +1,85 @@
+<!DOCTYPE>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{fragments/layout.html :: head}"></head>
+<body>
+    <div id="title" style="display: none;">Databáze uživatelů</div>
+    <div class="card text-center">
+        <div class="card-header" style="background-color: #e7470a;">
+            <img class="position-absolute top-0 start-0 ms-3 mt-2" th:src="@{http://localhost:8080/images/settings.png}" rel="icon" alt="settings-icon" height="60" width="60"/>
+            <ul class="nav nav-tabs card-header-tabs justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link text-white border-0" th:href="@{/adduser}" data-bs-toggle="modal" data-bs-target="#newuser" data-bs-whatever="create-user">Vytvořit pojištěnce</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white border-0" th:href="@{/admin}">Zpět k databázi</a>
+                </li>
+            </ul>
+        </div>
+        <div th:insert="~{fragments/layout.html :: alerts}"></div>
+        <div class="card-body justify-content-center mt-3">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Čislo pojíštěnce</th>
+                    <th>Jméno</th>
+                    <th>Přijmení</th>
+                    <th>Email</th>
+                    <th>Datum narození</th>
+                    <th>Uživatelske jméno</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="users : ${users}">
+                    <td th:text="${users.id}"></td>
+                    <td th:text="${users.name}"></td>
+                    <td th:text="${users.lastName}"></td>
+                    <td th:text="${users.email}"></td>
+                    <td th:text="${users.dateOfBirth}"></td>
+                    <td th:text="${users.username}"></td>
+                    <td>
+                        <div class="btn-group" role="group">
+                           <form action="#" th:action="@{|/admin/delete/${users.id}|}" th:method="GET">
+                                <button type="btn" class="bg-danger rounded-pill me-2">Smazat</button>
+                            </form>
+                            <form action="#" th:action="@{|/admin/insurance/${users.id}|}" th:method="GET">
+                                <button type="btn" class="bg-secondary rounded-pill me-2" >Zobrazit</button>
+                            </form>
+                            <form action="#" th:action="@{|/admin/edituser/${users.id}|}" th:method="GET">
+                                <button type="btn" class="bg-warning rounded-pill mx-0">Upravit</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="container">
+            <div class="modal fade modal-lg" id="newuser" tabindex="-1" aria-labelledby="newuser-label" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="newuser-label">Nový pojíštenec</h5>
+                            <button type="btnClose" class="btn-close bg-danger" data-bs-dismiss="modal" aria-label="Zavřít"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="users-form"
+                                  class="form-group needs-validation w-60"
+                                  th:action="@{/adduser}"
+                                  th:object="${registrationForm}"
+                                  method="post" novalidate>
+                                <div th:replace="~{fragments/forms.html :: registration-form-fragment}"></div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button form="users-form" type="submit" class="button-15 ms-5">Vytvořit účet</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script th:replace="~{fragments/layout.html :: script}"></script>
+</body>
+</html>

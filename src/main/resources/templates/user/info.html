@@ -1,0 +1,37 @@
+<!DOCTYPE>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{fragments/layout.html :: head}"></head>
+<body>
+    <div id="title" style="display: none;">O nás</div>
+    <div th:replace="~{fragments/layout.html :: applabel}"></div>
+    <nav th:replace="~{fragments/layout.html :: navmenu}"></nav>
+    <div th:insert="~{fragments/forms.html :: login}"></div>
+    <div id="about-us">
+        <div class="container">
+            <div class="card-transparent">
+                <div class="card-body">
+                    <h1 class="card-tittle text-center my-5 mx-3">O společnosti POJISTOVNA</h1>
+                    <div class="row justify-content-around">
+                        <article id="info-description" class="card-text text-end col-5 offset-1 mx-5">Pojistovna "POJISTOVNA" je na trhu už 150 tisíc let. V současné době jsme partnerem pro více než 80 miliony klientů po celém světě. Budeme rádi, když se k nám přidáte i Vy! Můžeme vám nabídnout servis u řady finančních produktů: nabízíme a spravujeme prostřednictvím našich společností nebo partnerů životní i neživotní pojištění osob i firem, pojištění domacích mazličků, nemovitosti, osobních automobilu, stavební spoření nebo hypotéky.
+                        Spolu s vámi tvoříme komunitu, v níž společně přispíváme k lepšímu životu vás i vašich blízkých. Podporujeme vás den co den ve vašich rozhodnutích. Chcete-li aktivně formovat svoji budoucnost a zlepšovat svůj život i svět okolo vás, vyberte si POJISTOVNU.</article>
+                    </div>
+                    <div class="row justify-content-around mt-5">
+                        <p class="card-text text-end col-5 offset-1 mx-5"><strong>POJISTOVNA v Evropě:</strong> Jsme oporou pro více než 50 milionů klientů v 28 zemích na našem kontinentu.</p>
+                    </div>
+                    <div class="row justify-content-around">
+                        <p class="card-text text-end col-5 offset-1 mx-5"><strong>POJISTOVNAv Severní Americe:</strong> Naší pojištovnu zvolilo více jak 25 milionů klientů.</p>
+                    </div>
+                    <ul class="text-center mt-5 fw-bold border border-1 border border-secondary">
+                        <li><em>Stavíme na 150 tisíc leté tradici a zkušenostech.</em></li>
+                        <li><em>Staráme se o kmen více než 514 milionu smluv.</em></li>
+                        <li><em>Náš evropský tým tvoří 50 000 interních a asi 18 340 externích kolegů a spolupracovníků .</em></li>
+                    </ul>
+                </div>
+        </div>
+    </div>
+    </div>
+    <div th:replace="~{fragments/layout.html :: footer}"></div>
+    <script th:fragment="script" th:src="@{/js/script.js}"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{fragments/layout.html :: head}"></head>
+<body>
+    <div id="title" style="display: none;">Interni chyba</div>
+    <div th:replace="~{fragments/layout.html :: applabel}"></div>
+    <nav th:replace="~{fragments/layout.html :: navmenu}"></nav>
+    <div class="container text-center mt-5">
+        <h1>Interni chyba: <img th:src="@{http://localhost:8080/images/500.png}" rel="500-icon" alt="internal-server-error-image" height="60" width="60"/></h1>
+    </div>
+    <div th:replace="~{fragments/layout.html :: footer}"></div>
+    <script th:replace="~{fragments/layout.html :: script}"></script>
+</body>
+</html>

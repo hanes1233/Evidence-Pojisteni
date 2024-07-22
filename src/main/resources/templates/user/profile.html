@@ -1,0 +1,67 @@
+<!DOCTYPE>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{fragments/layout.html :: head}"></head>
+<body onload="hideAlertMessage()">
+  <div id="title" style="display: none;">Můj kabinet</div>
+  <div th:replace="~{fragments/layout.html :: applabel}"></div>
+  <nav th:replace="~{fragments/layout.html :: navmenu}"></nav>
+  <div class="col-3">
+    <div th:replace="~{fragments/layout.html :: user-card}"></div>
+  </div>
+  <div class="row w-100">
+    <div class="col-6">
+      <div class="col-3">
+        <div class="input-group my-3 mx-3">
+          <span class="me-1" th:text="${address.street}"></span>
+          <span th:text="${address.streetNum}"></span>
+        </div>
+        <div class="input-group mx-3">
+          <span class="me-2" th:text="${address.psc}"></span>
+          <span th:text="${address.city}"></span>
+        </div>
+        <div class="input-group my-3 mx-3">
+          <span th:text="${address.country}"></span>
+        </div>
+      </div>
+    </div>
+  <div class="col-6 border">
+    <div class="text-center mb-4 mt-2">
+      <h2>Moje pojištění</h2>
+    </div>
+    <div id="row-box" class="row">
+      <div id="alert-box" class="col-9 pe-0">
+        <div id="status-alert" th:text="${emptyList}" class="alert alert-danger mt-2 p-2" role="alert"></div>
+      </div>
+      <div id="button-box" class="col-3">
+        <button class="btn btn-success dropdown-toggle mt-2 p-2" type="btn" id="dropdown-button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Sjednát ted'
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdown-button">
+          <button id="dropdown-life" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#insurance" data-bs-whatever="order-insurance">Pojištění životu</button>
+          <button id="dropdown-travel" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#insurance" data-bs-whatever="order-insurance" >Cestovní pojištění</button>
+          <button id="dropdown-property" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#insurance" data-bs-whatever="order-insurance">Pojištění nemovitosti</button>
+          <button id="droppdown-car" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#insurance" data-bs-whatever="order-insurance">Povinné ručení</button>
+          <button id="dropdown-pets" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#insurance" data-bs-whatever="order-insurance">Pojištění mazlíčků</button>
+        </div>
+        <div th:replace="~{fragments/forms.html :: insurance-form-fragment}"></div>
+      </div>
+    </div>
+    <table class="table border">
+      <thead>
+      <tr>
+        <div th:replace="~{fragments/table.html :: insurance-table-th}"></div>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="insurance : ${insurance}">
+        <div th:replace="~{fragments/table.html :: insurance-table-td}"></div>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div th:replace="~{fragments/layout.html :: footer}"></div>
+<script th:replace="~{fragments/layout.html :: script}"></script>
+</body>
+</html>

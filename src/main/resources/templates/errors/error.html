@@ -1,0 +1,22 @@
+<!DOCTYPE>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{fragments/layout.html :: head}"></head>
+<body>
+    <div id="title" style="display: none;">Oooops! Něco se nepovedlo...</div>
+    <div th:replace="~{fragments/layout.html :: applabel}"></div>
+    <nav th:replace="~{fragments/layout.html :: navmenu}"></nav>
+    <div class="container">
+        <div class="card text-center ms-5">
+            <div class="card-header bg-transparent border-y-0">
+                <img th:src="@{http://localhost:8080/images/notfound.png}" rel="erroricon" height="300" width="300" alt="not-found-icon"/>
+            </div>
+            <div class="card-body">
+                <h1>Nastala neznámá chyba...<img th:src="@{http://localhost:8080/images/sadsmile.png}" rel="sad-smile-icon" height="50" width="50" alt="sad-smile"/></h1>
+            </div>
+        </div>
+    </div>
+    <div th:replace="~{fragments/layout.html :: footer}"></div>
+    <script th:replace="~{fragments/layout.html :: script}"></script>
+</body>
+</html>

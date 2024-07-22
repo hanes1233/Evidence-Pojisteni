@@ -1,0 +1,18 @@
+<!DOCTYPE>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{fragments/layout.html :: head}"></head>
+<body>
+    <div id="title" style="display: none;">Chybný požadavek</div>
+    <div th:replace="~{fragments/layout.html :: applabel}"></div>
+    <nav th:replace="~{fragments/layout.html :: navmenu}"></nav>
+    <div class="container text-center mt-5">
+        <h1 class="mb-5">Chybný požadavek: 400</h1>
+        <p>Zkontrolujte prosím spravnost zadaných udaju a zopakujte znova.</p>
+        <div th:text="${message}" class="alert alert-danger mt-2 p-2" role="alert"></div>
+    </div>
+    <div th:replace="~{fragments/layout.html :: footer}"></div>
+    <script th:replace="~{fragments/layout.html :: script}"></script>
+</body>
+</html>

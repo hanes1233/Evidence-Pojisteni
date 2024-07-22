@@ -1,0 +1,101 @@
+<!DOCTYPE>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{fragments/layout.html :: head}"></head>
+<body>
+    <div id="title" style="display: none;">Upravit uživatele</div>
+    <div class="card text-center border-bottom-0">
+        <div th:insert="~{fragments/layout.html :: editpanel}"></div>
+        <div class="card-body justify-content-center">
+            <div class="card mb-4">
+                <div th:replace="~{fragments/layout.html :: user-card}"></div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <form id="update-user"
+              class="form-group needs-validation w-60"
+              th:action="@{|/admin/updateuser/${user.id}|}"
+              th:object="${registrationForm}"
+              method="post"
+              novalidate>
+            <div class="row mb-4">
+                <div class="input-group w-50 pe-4">
+                    <label for="name" class="form-label pe-2">Jméno:</label>
+                    <input class="form-control" th:name="name" th:value="*{userDTO.name}" th:field="*{userDTO.name}" id="name" type="text" required />
+                </div>
+                <div class="input-group w-50 col-6">
+                    <label for="lastname" class="form-label pe-2">Příjmení:</label>
+                    <input class="form-control col-6" th:name="lastName" th:field="*{userDTO.lastName}" id="lastname" type="text" placeholder="Příjmení" required />
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="input-group w-50 pe-4">
+                    <label for="userName" class="form-label pe-2">Uživatel:</label>
+                    <input class="form-control" th:name="username" th:field="*{userDTO.username}" id="userName" type="text" required />
+                </div>
+                <div class="input-group w-25 col-6">
+                    <label for="is-admin" class="form-label pe-2">Spravce:</label>
+                    <input class="col-1 ms-2" th:name="is-admin" th:value="${isAdmin}" id="is-admin" type="checkbox" th:checked="${user.isAdmin}"/>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="input-group w-50 pe-4">
+                    <label for="email" class="col-form-label pe-2">Email:</label>
+                    <input class="form-control" th:name="email" th:field="*{userDTO.email}" id="email" type="text" placeholder="uzivatel@seznam.cz" required/>
+                </div>
+                <div class="input-group w-50 col-6">
+                    <label for="phone" class="form-label pe-2">Telefon : </label>
+                    <input class="form-control col-6" th:name="phone" th:value="${phone}" id="phone" type="text" placeholder="+420" />
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="input-group w-50 pe-4">
+                    <label for="citizenship" class="col-form-label pe-2">Občanství:</label>
+                    <select class="form-control" name="countries" id="citizenship">
+                        <option th:each="countries : ${T(com.example.evidencepojisteni.models.services.Countries).values()}"
+                                th:value="${countries}" th:text="${countries.country}"></option>
+                        <option th:name="${countries}"
+                                th:text="${address.country}"
+                                th:selected="${address.country}"></option>
+                    </select>
+                </div>
+                <div class="input-group w-50 col-6">
+                    <label for="city" class="form-label pe-2">Město:</label>
+                    <input class="form-control col-6" th:name="city" th:field="*{addressDTO.city}" id="city" type="text" required/>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="input-group w-50 pe-4">
+                    <label for="street" class="form-label pe-2">Ulice:</label>
+                    <input class="form-control" th:name="street" th:field="*{addressDTO.street}" id="street" type="text" placeholder="ulice" required/>
+                </div>
+                <div class="input-group w-50 col-6">
+                    <label for="streetnum" class="form-label pe-2">Popisné:</label>
+                    <input class="form-control col-6" th:name="streetNum" th:field="*{addressDTO.streetNum}" id="streetnum" type="number" min="1" required/>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="input-group w-50 pe-4">
+                    <label for="zipcode" class="col-form-label pe-2">PSČ:</label>
+                    <input class="form-control" th:name="zipcode" th:field="*{addressDTO.psc}" id="zipcode" type="number" min="1000" required/>
+                </div>
+                <div class="input-group w-50 col-6">
+                    <label for="birthday" class="form-label pe-2">Narozen(a):</label>
+                    <input class="form-control col-6" th:name="dateOfBirth" th:field="*{userDTO.dateOfBirth}" id="birthday" type="date" required />
+                </div>
+                <div class="visually-hidden">
+                    <label>
+                        <input type="number" name="id" th:name="id" th:text="${user.id}" th:field="*{userDTO.id}">
+                    </label>
+                </div>
+                <div class="input-group justify-content-center mt-4">
+                    <button form="update-user" type="submit" class="button-15 ms-5">Uložit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script th:replace="~{fragments/layout.html :: script}"></script>
+</body>
+</html>

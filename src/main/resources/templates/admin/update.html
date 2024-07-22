@@ -1,0 +1,68 @@
+<!DOCTYPE>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{fragments/layout.html :: head}"></head>
+<body>
+    <div class="card text-center">
+        <div id="title" style="display: none;">Upravit pojištění</div>
+        <div th:insert="~{fragments/layout.html :: editpanel}"></div>
+        <div class="card-body justify-content-center mt-5">
+            <div class="container">
+                <form id="update-insurance-form"
+                      class="form-group needs-validation w-60"
+                      th:action="@{'/admin/update/' + ${id}}"
+                      th:object="${insuranceDTO}"
+                      method="post" novalidate>
+                    <div class="row mb-4 justify-content-center">
+                        <div class="input-group w-50">
+                            <label for="update-type" class="form-label pe-4">Typ pojištění:</label>
+                            <select class="form-control" name="type" id="update-type">
+                                <option th:each="type : ${T(com.example.evidencepojisteni.models.services.InsuranceType).values()}"
+                                        th:text="${type.type}"></option>
+                                <option th:field="*{type}" th:text="*{type}" th:value="*{type}" th:selected="*{type}"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-4 justify-content-center">
+                        <div class="input-group w-50">
+                            <label for="update-amount" class="form-label pe-4">Částka:</label>
+                            <input class="form-control" th:name="amount" th:field="*{amount}" th:value="*{amount}" id="update-amount" type="number" min="10000" required />
+                        </div>
+                    </div>
+                    <div class="row mb-4 justify-content-center">
+                        <div class="input-group w-50">
+                            <label for="update-object" class="form-label pe-4">Objekt pojíštění:</label>
+                            <input class="form-control" th:name="subject" th:field="*{subject}" id="update-object" type="text" required />
+                        </div>
+                    </div>
+                    <div class="row mb-4 justify-content-center">
+                        <div class="input-group w-50">
+                            <label for="update-beginningDate" class="form-label pe-4">Pojistít ode dne:</label>
+                            <input class="form-control" th:name="dateOfStart" th:field="*{dateOfStart}" id="update-beginningDate" type="date" required />
+                        </div>
+                    </div>
+                    <div class="row mb-4 justify-content-center">
+                        <div class="input-group w-50">
+                            <label for="update-endDate" class="col-form-label pe-4">Do dne:</label>
+                            <input class="form-control" th:name="dateOfEnd" th:field="*{dateOfEnd}" id="update-endDate" type="date" required/>
+                        </div>
+                    </div>
+                    <div class="visually-hidden">
+                        <label>
+                            <input type="number" name="userId" th:name="userId" th:text="${userId}" th:field="*{userId}"/>
+                        </label>
+                        <label>
+                            <input type="number" name="id" th:name="*{id}" th:text="*{id}" th:field="*{id}">
+                        </label>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card-footer justify-content-center row mt-5 bg-transparent">
+            <button form="update-insurance-form" type="submit" class="button-15 w-25">Odeslat ke zpracování</button>
+        </div>
+    </div>
+    <script th:replace="~{fragments/layout.html :: script}"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head th:insert="~{fragments/layout.html :: head}"></head>
+<body>
+    <div id="title" style="display: none;">Registrace</div>
+    <div th:replace="~{fragments/layout.html :: applabel}"></div>
+    <nav th:replace="~{fragments/layout.html :: navmenu}"></nav>
+    <div class="container">
+        <div class="container row justify-content-center">
+                <form class="form-group row needs-validation w-50"
+                      th:action="@{/registration}"
+                      th:object="${registrationForm}"
+                      method="post"
+                      novalidate>
+                    <div th:replace="~{fragments/forms.html :: registration-form-fragment}"></div>
+                    <div class="input-group mb-2 justify-content-center">
+                        <button type="reset" class="button-15 me-5" onclick="returnToMainPage()"> Zrušení</button>
+                        <button type="submit" class="button-15 ms-5">Vytvořit účet</button>
+                    </div>
+                </form>
+        </div>
+    </div>
+    <div th:replace="~{fragments/layout.html :: footer}"></div>
+    <script th:replace="~{fragments/layout.html :: script}"></script>
+</body>
+</html>

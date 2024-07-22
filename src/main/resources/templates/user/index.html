@@ -1,0 +1,35 @@
+<!DOCTYPE>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{fragments/layout.html :: head}"></head>
+<body>
+    <div id="title" style="display: none;">Vítejte v naší POJIŠTOVNĚ!</div>
+    <div th:replace="~{fragments/layout.html :: applabel}"></div>
+    <nav th:replace="~{fragments/layout.html :: navmenu}"></nav>
+    <div th:insert="~{fragments/forms.html :: login}"></div>
+    <article>
+        <section id="insurranceDescription"></section>
+    </article>
+    <ul class="description-list">
+        <li>
+            <img th:src="@{/images/life.png}" alt="healthinsurranceicon" height="70" width="70"/>
+            <a id="healthdescription">Pojištění životu</a>
+        </li>
+        <li>
+            <img th:src="@{/images/travel.png}" alt="travelinsurranceicon" height="70" width="70"/>
+            <a id="traveldescription">Cestovní pojištění</a>
+        </li>
+        <li>
+            <img th:src="@{/images/property.png}" alt="propertyinsurranceicon" height="70" width="70"/>
+            <a id="propertydescription">Pojištění nemovitosti</a></li>
+        <li>
+            <img th:src="@{/images/auto.png}" alt="carinsurranceicon" height="70" width="70"/>
+            <a id="cardescription">Povinné ručení</a></li>
+        <li>
+            <img th:src="@{/images/pet.png}" alt="petinsurranceicon" height="70" width="70"/>
+            <a id="petdescription">Pojištění mazlíčků</a></li>
+    </ul>
+    <div th:replace="~{fragments/layout.html :: footer}"></div>
+    <script th:replace="~{fragments/layout.html :: script}"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{fragments/layout.html :: head}"></head>
+<body onload="animateNoFoundImage()">
+    <div id="title" style="display: none;">Stranka nebyla nalezena</div>
+    <div th:replace="~{fragments/layout.html :: applabel}"></div>
+    <nav th:replace="~{fragments/layout.html :: navmenu}"></nav>
+    <div class="container text-center mt-5">
+        <h1>Stránka nebyla nalezena:(</h1>
+        <img class="fade" id="404" th:src="@{http://localhost:8080/images/404.png}" rel="404-icon" alt="not-found-image"/>
+    </div>
+    <div th:replace="~{fragments/layout.html :: footer}"></div>
+    <script th:replace="~{fragments/layout.html :: script}"></script>
+</body>
+</html>

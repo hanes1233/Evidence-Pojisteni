@@ -1,0 +1,81 @@
+<!DOCTYPE>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{fragments/layout.html :: head}"></head>
+<body>
+    <div id="title" style="display: none;">Kontakty</div>
+    <div th:replace="~{fragments/layout.html :: applabel}"></div>
+    <nav th:replace="~{fragments/layout.html :: navmenu}"></nav>
+    <div class="row w-100">
+        <div th:insert="~{fragments/forms.html :: login}"></div>
+        <div class="card text-start col-4 border-bottom-0 border-top-0 border-start-0 rounded-0 ms-5">
+            <h3 class="my-5">Jsme pro Vás 24/7</h3>
+            <div class="row mb-5">
+                <div class="col-2">
+                    <img th:src="@{/images/infolink.png}" alt="infolink" width="40" height="40"/>
+                </div>
+                <div class="col-10 mt-2">
+                    <h5>Infolinka</h5>
+                    <span>+420 774 502 960</span>
+                </div>
+            </div>
+            <div class="row mb-5">
+                <div class="col-2">
+                    <img th:src="@{/images/mail.png}" alt="mailicon" width="40" height="40"/>
+                </div>
+                <div class="col-10 mt-2">
+                    <h5>Napište nám</h5>
+                    <span>pavelherasymov@seznam.cz</span>
+                </div>
+            </div>
+            <div class="row mb-5">
+                <div class="col-2">
+                    <img th:src="@{/images/github.png}" alt="githubicon" width="40" height="40"/>
+                </div>
+                <div class="col-10 mt-2">
+                    <h5>Náše produkty</h5>
+                    <span>najděte <a th:href="@{https://github.com/hanes1233?tab=repositories}">ZDE</a></span>
+                </div>
+            </div>
+        </div>
+    <div class="card text-start col-3 border-top-0 border-bottom-0 border-start-0 ms-5">
+        <h4 class="mx-0 my-5">Socialní sítě</h4>
+        <div class="row mb-5">
+            <div class="col-2">
+                <img th:src="@{/images/facebook1.png}" alt="infolink" width="40" height="40"/>
+            </div>
+            <div class="col-10 mt-2">
+                <a class="text-decoration-none text-reset" th:href="@{https://www.facebook.com/?locale=cs_CZ}">Facebook</a>
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-2">
+                <img th:src="@{/images/linkedin1.png}" alt="infolink" width="40" height="40"/>
+            </div>
+            <div class="col-10 mt-2">
+                <a class="text-decoration-none text-reset" th:href="@{https://www.linkedin.com/}">LinkedIn</a>
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-2">
+                <img th:src="@{/images/instagram1.png}" alt="infolink" width="40" height="40"/>
+            </div>
+            <div class="col-10 mt-2">
+                <a class="text-decoration-none text-reset" th:href="@{https://www.instagram.com/}">Instagram</a>
+            </div>
+        </div>
+    </div>
+    <div class="card text-start col-4 border-0">
+        <h4 class="ms-5 my-5">Najděte náší pobočku</h4>
+        <article class="ms-5">
+            <section>Hlavní sídlo se nachází v Jížní Koree, Seoul, Gangbyeonbuk-ro 34. Daleko?<strong>Není problem!</strong>  Máme pobočky ve 145 státech po celém světě, včetně <del>Mozambique a Somali</del> České republiky a Slovenska!</section>
+            <br/>
+            <p><strong>Pobočka v Praze:</strong> ulice Programátorska 1/1, druhé pátro</p>
+            <p><strong>Pobočka v Bratislavě:</strong> ulice Československá 2/136, budova B.</p>
+        </article>
+    </div>
+    </div>
+    <div th:replace="~{fragments/layout.html :: footer}"></div>
+    <script th:replace="~{fragments/layout.html :: script}"></script>
+</body>
+</html>
